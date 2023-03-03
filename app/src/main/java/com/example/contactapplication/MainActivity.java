@@ -35,9 +35,10 @@ public class MainActivity extends AppCompatActivity {
         //restoreListViewInstance();
         ExtendedFloatingActionButton fab = findViewById(R.id.extended_fab);
 
+
+
         lView.setAdapter(adapter);
 
-        // set up item long click listener to remove contacts from the list
         lView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -46,8 +47,6 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-        // set up item click listener to display detailed contact information
         lView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -56,42 +55,45 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        // set up click listener for the add contact button
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.e("IUT", "onClick:fab done " );
                 Intent intent = new Intent(MainActivity.this, AddContactActivity.class);
                 startActivityForResult(intent,20);
+
+
             }
         });
+
+
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        saveListViewInstance();
+       // saveListViewInstance();
+
+    }
+    private void restoreListViewInstance() {
+        Log.e("IUT", "instance restored");
+        try {
+            ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(new File(getFilesDir(), "listview_instance")));
+            contacts = (ArrayList<Contact>) inputStream.readObject();
+            inputStream.close();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
-    // save the ArrayList of Contacts to a file using an ObjectOutputStream
     private void saveListViewInstance() {
+        Log.e("IUT", "instance saved");
         try {
             ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(new File(getFilesDir(), "listview_instance")));
             outputStream.writeObject(contacts);
             outputStream.flush();
             outputStream.close();
         } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    // read the ArrayList of Contacts from a file using an ObjectInputStream and populate the ListView
-    private void restoreListViewInstance() {
-        try {
-            ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(new File(getFilesDir(), "listview_instance")));
-            contacts = (ArrayList<Contact>) inputStream.readObject();
-            inputStream.close();
-        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
@@ -107,4 +109,5 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
 }
