@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">ContactApplication</string>
+    <string name="add_a_contact_with_this_button">Add a contact with this button</string>
+    <string name="add_contact">Add contact</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
+    <string name="_33_6_25_43_87_62">+33 6 25 43 87 62</string>
+    <string name="contact_image">Contact image</string>
+    <string name="addName">Name</string>
+    <string name="addSurname">Surname</string>
+    <string name="other">Other</string>
+    <string name="female">Female</string>
+    <string name="male">Male</string>
+    <string name="address">Address</string>
+    <string name="zip">ZIP</string>
+    <string name="_33">+33</string>
+    <string name="add_a_contact_with_this_fab">add a contact with this fab</string>
+    <string name="avatar_to_add">avatar to add</string>
+    <string name="name_detail">Name</string>
+    <string name="name_Detail">Name</string>
+    <string name="surname_detail">Surname</string>
+    <string name="_06_25_57_94_45">06 25 57 94 45</string>
+    <string name="zip_code">ZIP CODE</string>
+</resources>

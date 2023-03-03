@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddContactActivity">
+
+
+
+
+    <ImageView
+        android:id="@+id/addImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteY="218dp"
+        tools:srcCompat="@tools:sample/avatars"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/radio_group"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20sp"
+        android:contentDescription="@string/avatar_to_add" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/radio_group"
+        android:orientation="horizontal"
+        android:layout_marginTop="50sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addImageView">
+
+
+        <RadioButton
+            android:id="@+id/male_radio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/male" />
+
+        <RadioButton
+            android:id="@+id/female_radio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/female" />
+
+        <RadioButton
+            android:id="@+id/other_radio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/other" />
+    </RadioGroup>
+    <EditText
+        android:id="@+id/addName"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:minHeight="48dp"
+
+        android:inputType="textPersonName"
+        android:hint="@string/addName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/radio_group"
+        android:layout_marginStart="20sp"
+        android:layout_marginTop="20dp"
+        tools:layout_editor_absoluteX="7dp"
+        tools:layout_editor_absoluteY="65dp"
+        android:autofillHints="" />
+    <EditText
+        android:id="@+id/addSurname"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/addSurname"
+        app:layout_constraintStart_toEndOf="@id/addName"
+        app:layout_constraintTop_toBottomOf="@id/radio_group"
+        android:layout_marginStart="20sp"
+        android:layout_marginTop="20dp"
+        tools:layout_editor_absoluteX="7dp"
+        tools:layout_editor_absoluteY="65dp"
+        android:autofillHints="" />
+    <EditText
+        android:id="@+id/addAddress"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+
+    android:ems="10"
+        android:inputType="textPostalAddress"
+        android:hint="@string/address"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/addName"
+        android:layout_marginStart="20sp"
+        android:layout_marginTop="30dp"
+        tools:layout_editor_absoluteX="7dp"
+        tools:layout_editor_absoluteY="65dp"
+        android:autofillHints="Your living location" />
+    <EditText
+        android:id="@+id/addZipCode"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="@string/zip"
+        app:layout_constraintStart_toEndOf="@id/addAddress"
+        app:layout_constraintTop_toBottomOf="@id/addSurname"
+        android:layout_marginStart="20sp"
+        android:layout_marginTop="30dp"
+        tools:layout_editor_absoluteX="7dp"
+        tools:layout_editor_absoluteY="65dp"
+        android:autofillHints="" />
+
+    <EditText
+        android:id="@+id/addPhoneNumber"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:minHeight="48dp"
+
+        android:inputType="phone"
+        android:hint="@string/_33"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/addAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="20sp"
+        android:layout_marginTop="30dp"
+        tools:layout_editor_absoluteX="7dp"
+        tools:layout_editor_absoluteY="65dp"
+        android:autofillHints="" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/extended_fab2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="16dp"
+        android:contentDescription="@string/add_a_contact_with_this_fab"
+        android:text="@string/add_contact"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent   "
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="RtlHardcoded" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
