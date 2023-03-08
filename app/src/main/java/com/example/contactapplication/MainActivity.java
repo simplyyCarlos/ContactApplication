@@ -30,14 +30,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        restoreListViewInstance();
         setContentView(R.layout.activity_main);
         this.lView = findViewById(R.id.listViewContact);
-        //restoreListViewInstance();
+
+
+
         ExtendedFloatingActionButton fab = findViewById(R.id.extended_fab);
 
 
 
         lView.setAdapter(adapter);
+
 
         lView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -72,30 +76,41 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-       // saveListViewInstance();
+        saveListViewInstance();
+
 
     }
     private void restoreListViewInstance() {
-        Log.e("IUT", "instance restored");
-        try {
-            ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(new File(getFilesDir(), "listview_instance")));
-            contacts = (ArrayList<Contact>) inputStream.readObject();
-            inputStream.close();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+        File directory = this.getFilesDir();
+        File file = new File(directory, "saveFile");
+        if(file.exists()){
+            Log.e("IUT","File exist");
+            FileInputStream fis = null;
+            ObjectInputStream in = null;
+            try {
+                fis = openFileInput("saveFile");
+                in = new ObjectInputStream(fis);
+                contacts.addAll((ArrayList<Contact>) in.readObject());
+                Log.e("IUT",Integer.toString(contacts.size()));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
     private void saveListViewInstance() {
-        Log.e("IUT", "instance saved");
+        FileOutputStream fos = null;
+        ObjectOutputStream out = null;
         try {
-            ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(new File(getFilesDir(), "listview_instance")));
-            outputStream.writeObject(contacts);
-            outputStream.flush();
-            outputStream.close();
+            fos = openFileOutput("saveFile", Context.MODE_PRIVATE);
+            out = new ObjectOutputStream(fos);
+            out.writeObject(contacts);
+            out.close();
+            Log.e("IUT","contacts save");
         } catch (IOException e) {
             e.printStackTrace();
         }
+        super.onStop();
     }
 
     @Override
@@ -105,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
             if (data != null && data.hasExtra("contact")) {
                 Contact tmp = (Contact) data.getSerializableExtra("contact");
                 contacts.add(tmp);
+
                 adapter.notifyDataSetChanged();
             }
         }
