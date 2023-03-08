@@ -1,5 +1,7 @@
 package com.example.contactapplication;
 
+import android.net.Uri;
+
 import java.io.Serializable;
 
 public class Contact implements Serializable {
@@ -7,26 +9,27 @@ public class Contact implements Serializable {
     private String surname;
     private String phoneNumber;
     private String address;
-    private String email;
     private String zipcode;
     private String gender;
-    private String birthdate;
+    private Uri uri;
 
-
-
-
-
-    public Contact(String name, String surname, String phoneNumber, String address, String email, String zipcode, String gender, String birthdate) {
+    public Contact(String name, String surname, String phoneNumber, String address, String zipcode, String gender, Uri uri) {
         this.name = name;
         this.surname = surname;
         this.phoneNumber = phoneNumber;
         this.address = address;
-        this.email = email;
         this.zipcode = zipcode;
         this.gender = gender;
-        this.birthdate = birthdate;
-
+        this.uri = uri;
     }
+    public Uri getUri() {
+        return uri;
+    }
+
+    public void setUri(Uri uri) {
+        this.uri = uri;
+    }
+
 
     public String getName() {
         return name;
@@ -60,14 +63,6 @@ public class Contact implements Serializable {
         this.address = address;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getZipcode() {
         return zipcode;
     }
@@ -84,11 +79,4 @@ public class Contact implements Serializable {
         this.gender = gender;
     }
 
-    public String getBirthdate() {
-        return birthdate;
-    }
-
-    public void setBirthdate(String birthdate) {
-        this.birthdate = birthdate;
-    }
 }

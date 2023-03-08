@@ -11,8 +11,8 @@
 
     <ImageView
         android:id="@+id/addImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         tools:layout_editor_absoluteY="218dp"
         tools:srcCompat="@tools:sample/avatars"
         app:layout_constraintTop_toTopOf="parent"

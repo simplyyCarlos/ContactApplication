@@ -18,31 +18,36 @@
         tools:layout_editor_absoluteX="150dp"
         tools:layout_editor_absoluteY="53dp"
         tools:srcCompat="@tools:sample/avatars" />
+
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/name_detail"
         android:id="@+id/nameDetail"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="150dp"
-        app:layout_constraintTop_toBottomOf="@id/imageViewDetails"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:textSize="20sp">
-
-    </TextView>
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/surname_detail"
-        android:layout_marginTop="30dp"
-        android:id="@+id/surname_detail"
-        app:layout_constraintTop_toBottomOf="@id/imageViewDetails"
-        app:layout_constraintStart_toEndOf="@id/nameDetail"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="150dp"
+        android:text="@string/name_detail"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:textSize="20sp">
+        app:layout_constraintHorizontal_bias="0.367"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageViewDetails">
 
     </TextView>
+
+    <TextView
+        android:id="@+id/surname_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="37dp"
+        android:text="@string/surname_detail"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toEndOf="@id/nameDetail"
+        app:layout_constraintTop_toBottomOf="@id/imageViewDetails">
+
+    </TextView>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -74,10 +79,11 @@
         android:id="@+id/zip_code"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="29dp"
         android:text="@string/zip_code"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.465"
         app:layout_constraintStart_toEndOf="@id/adress_detail"
         app:layout_constraintTop_toBottomOf="@id/detail_phone">
 

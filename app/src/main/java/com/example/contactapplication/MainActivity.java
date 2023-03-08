@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
         this.lView = findViewById(R.id.listViewContact);
 
 
-
         ExtendedFloatingActionButton fab = findViewById(R.id.extended_fab);
 
 

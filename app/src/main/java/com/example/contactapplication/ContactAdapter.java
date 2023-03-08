@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.squareup.picasso.Picasso;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -61,7 +63,20 @@ public class ContactAdapter extends BaseAdapter implements Serializable {
         name.setText(c.getName());
         surname.setText(c.getSurname());
         phoneNumber.setText(c.getPhoneNumber());
-        imageView.setImageResource(R.drawable.boy);
+        if(c.getUri() != null){
+            Picasso.get().load(c.getUri()).into(imageView);
+            return layoutItem;
+        }
+        switch(c.getGender()){
+            case "male":
+                imageView.setImageResource(R.drawable.boy);
+            case "female":
+                imageView.setImageResource(R.drawable.girl);
+            case "other":
+                imageView.setImageResource(R.drawable.heli);
+
+        }
+
 
 
 
