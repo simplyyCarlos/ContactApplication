@@ -1,5 +1,7 @@
 package com.example.contactapplication;
 
+import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,22 +65,27 @@ public class ContactAdapter extends BaseAdapter implements Serializable {
         name.setText(c.getName());
         surname.setText(c.getSurname());
         phoneNumber.setText(c.getPhoneNumber());
-        if(c.getUri() != null){
-            Picasso.get().load(c.getUri()).into(imageView);
+
+        if(c.isUri()){
+            Picasso.get()
+                    .load(Uri.parse(c.getUri()))
+                    .into(imageView);
             return layoutItem;
         }
-        switch(c.getGender()){
-            case "male":
-                imageView.setImageResource(R.drawable.boy);
-            case "female":
-                imageView.setImageResource(R.drawable.girl);
-            case "other":
-                imageView.setImageResource(R.drawable.heli);
 
-        }
-
-
-
+            switch (c.getGender()) {
+                case "male":
+                    imageView.setImageResource(R.drawable.boy);
+                    break;
+                case "female":
+                    imageView.setImageResource(R.drawable.girl);
+                    break;
+                case "other":
+                    imageView.setImageResource(R.drawable.heli);
+                    break;
+                default:
+                    break;
+            }
 
         return layoutItem;
 

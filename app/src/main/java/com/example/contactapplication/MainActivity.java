@@ -119,7 +119,6 @@ public class MainActivity extends AppCompatActivity {
             if (data != null && data.hasExtra("contact")) {
                 Contact tmp = (Contact) data.getSerializableExtra("contact");
                 contacts.add(tmp);
-
                 adapter.notifyDataSetChanged();
             }
         }

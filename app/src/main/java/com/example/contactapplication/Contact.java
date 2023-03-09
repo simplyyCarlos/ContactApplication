@@ -1,6 +1,9 @@
 package com.example.contactapplication;
 
-import android.net.Uri;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
 
 import java.io.Serializable;
 
@@ -11,9 +14,12 @@ public class Contact implements Serializable {
     private String address;
     private String zipcode;
     private String gender;
-    private Uri uri;
 
-    public Contact(String name, String surname, String phoneNumber, String address, String zipcode, String gender, Uri uri) {
+    private String uri;
+    private boolean isUri;
+
+
+    public Contact(String name, String surname, String phoneNumber, String address, String zipcode, String gender, String uri, boolean isUri) {
         this.name = name;
         this.surname = surname;
         this.phoneNumber = phoneNumber;
@@ -21,15 +27,26 @@ public class Contact implements Serializable {
         this.zipcode = zipcode;
         this.gender = gender;
         this.uri = uri;
+        this.isUri = isUri;
+
+
     }
-    public Uri getUri() {
+
+    public boolean isUri() {
+        return isUri;
+    }
+
+    public void setUri(boolean uri) {
+        isUri = uri;
+    }
+
+    public String getUri() {
         return uri;
     }
 
-    public void setUri(Uri uri) {
+    public void setUri(String uri) {
         this.uri = uri;
     }
-
 
     public String getName() {
         return name;
@@ -78,5 +95,6 @@ public class Contact implements Serializable {
     public void setGender(String gender) {
         this.gender = gender;
     }
+
 
 }

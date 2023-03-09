@@ -18,8 +18,12 @@ import com.google.android.material.floatingactionbutton.ExtendedFloatingActionBu
 import com.squareup.picasso.Picasso;
 
 public class AddContactActivity extends AppCompatActivity {
-    private Uri mImageUri = null;
+    private  Uri mImageUri = null;
     private ImageView iv;
+
+    private final String NO_URI_STRING = "none";
+    private String gender="male";
+    private boolean bool = false;
     private static final int PICK_IMAGE_REQUEST = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +51,15 @@ public class AddContactActivity extends AppCompatActivity {
                 switch (checkedId) {
                     case R.id.male_radio_button:
                         iv.setImageResource(R.drawable.boy);
+                        gender = "male";
                         break;
                     case R.id.female_radio_button:
                         iv.setImageResource(R.drawable.girl);
+                        gender ="female";
                         break;
                     case R.id.other_radio_button:
                         iv.setImageResource(R.drawable.heli);
+                        gender="other";
                         break;
                     default:
                         // do nothing if none of the radio buttons are selected
@@ -71,17 +78,14 @@ public class AddContactActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 MainActivity mainActivity = (MainActivity) getParent();
-                String gender;
-                switch (rg.getCheckedRadioButtonId()){
-                    case R.id.male_radio_button:
-                        gender = "male";
-                    case R.id.female_radio_button:
-                        gender = "female";
-                    case R.id.other_radio_button:
-                        gender = "other";
-                }
+                Contact temp;
+                if(mImageUri != null){
+                     temp = new Contact(edName.getText().toString(),edSurname.getText().toString(),phoneNumber.getText().toString(),edAddress.getText().toString(), zipCode.getText().toString(),gender,mImageUri.toString(), bool);
 
-                Contact temp= new Contact(edName.getText().toString(),edSurname.getText().toString(),phoneNumber.getText().toString(),edAddress.getText().toString(), zipCode.getText().toString(),"male",mImageUri);
+                }else{
+                     temp = new Contact(edName.getText().toString(),edSurname.getText().toString(),phoneNumber.getText().toString(),edAddress.getText().toString(), zipCode.getText().toString(),gender,NO_URI_STRING,bool);
+
+                }
                 Intent intent = new Intent();
                 intent.putExtra("contact",temp);
                 setResult(20,intent);
@@ -105,7 +109,10 @@ public class AddContactActivity extends AppCompatActivity {
 
         if((requestCode == PICK_IMAGE_REQUEST) && (resultCode == RESULT_OK) && (data != null) && (data.getData() != null)){
             mImageUri = data.getData();
+            bool = true;
             Picasso.get().load(mImageUri).into(iv);
+
         }
+
     }
 }
