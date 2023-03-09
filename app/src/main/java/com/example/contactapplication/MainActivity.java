@@ -30,16 +30,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        restoreListViewInstance();
+
         setContentView(R.layout.activity_main);
         this.lView = findViewById(R.id.listViewContact);
-
-
         ExtendedFloatingActionButton fab = findViewById(R.id.extended_fab);
-
-
-
         lView.setAdapter(adapter);
+        restoreListViewInstance();
 
 
         lView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -90,7 +86,8 @@ public class MainActivity extends AppCompatActivity {
                 fis = openFileInput("saveFile");
                 in = new ObjectInputStream(fis);
                 contacts.addAll((ArrayList<Contact>) in.readObject());
-                Log.e("IUT",Integer.toString(contacts.size()));
+
+                Log.e("IUT",contacts.get(0).getUri());
             } catch (Exception e) {
                 e.printStackTrace();
             }

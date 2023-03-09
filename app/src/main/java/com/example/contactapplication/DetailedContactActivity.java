@@ -2,9 +2,12 @@ package com.example.contactapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
@@ -18,14 +21,28 @@ public class DetailedContactActivity extends AppCompatActivity {
 
         ImageView iv = findViewById(R.id.imageViewDetails);
         TextView nt = findViewById(R.id.nameDetail);
-        TextView st = findViewById(R.id.surname_detail);
-        TextView num = findViewById(R.id.detail_phone);
-        TextView adrr = findViewById(R.id.adress_detail);
-        TextView zip = findViewById(R.id.zip_code);
+        TextView num = findViewById(R.id.detailPhone);
+        TextView adrr = findViewById(R.id.detailAdress);
+        TextView zip = findViewById(R.id.detailZIP);
+        if(c.isUri()){
+            Picasso.get().load(Uri.parse(c.getUri())).into(iv);
+        }else {
+            switch (c.getGender()) {
+                case "male":
+                    iv.setImageResource(R.drawable.boy);
+                    break;
+                case "female":
+                    iv.setImageResource(R.drawable.girl);
+                    break;
+                case "other":
+                    iv.setImageResource(R.drawable.heli);
+                    break;
+                default:
+                    break;
+            }
+        }
+        nt.setText(c.getName() + " " + c.getSurname());
 
-        iv.setImageResource(R.drawable.boy);
-        nt.setText(c.getName());
-        st.setText(c.getSurname());
         num.setText(c.getPhoneNumber());
         adrr.setText(c.getAddress());
         zip.setText(c.getZipcode());
